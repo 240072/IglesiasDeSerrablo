@@ -112,9 +112,22 @@ fun IglesiaScreen(
                         )
                         navController.context.startActivity(intent)
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF6D4C41),      // marrón románico
+                        contentColor = Color(0xFFF3E9D2)         // texto piedra clara
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    elevation = ButtonDefaults.buttonElevation(
+                        defaultElevation = 6.dp,
+                        pressedElevation = 2.dp
+                    )
                 ) {
-                    Text("Ver ubicación en Google Maps")
+                    Text(
+                        text = "Ver ubicación en Google Maps",
+                        fontFamily = UncialAntiqua,
+                        fontSize = 18.sp
+                    )
                 }
 
                 Row(
