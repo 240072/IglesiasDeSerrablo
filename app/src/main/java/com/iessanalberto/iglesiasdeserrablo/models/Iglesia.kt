@@ -6,5 +6,6 @@ data class Iglesia(
     val nombre: String = " ",
     val descripcionLong: String = " ",
     val descripcionShort: String = " ",
-    val foto: Int = 0
+    val foto: String = " ",
+    val ubicación: String = ""
 )
