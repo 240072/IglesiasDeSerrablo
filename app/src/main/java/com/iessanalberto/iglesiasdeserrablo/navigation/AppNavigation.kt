@@ -9,6 +9,7 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.navigation.compose.rememberNavController
 import com.iessanalberto.iglesiasdeserrablo.screens.IglesiaScreen
 import com.iessanalberto.iglesiasdeserrablo.screens.MainScreen
 import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
@@ -18,7 +19,7 @@ import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
 fun AppNavigation() {
 
     val iglesiaViewModel: IglesiaViewModel = viewModel()
-    val navController = rememberAnimatedNavController()
+    val navController = rememberNavController()
 
     AnimatedNavHost(
         navController = navController,

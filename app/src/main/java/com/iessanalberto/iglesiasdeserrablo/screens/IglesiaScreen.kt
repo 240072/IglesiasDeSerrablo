@@ -5,8 +5,13 @@ import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -22,6 +27,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.iessanalberto.iglesiasdeserrablo.R
 import com.iessanalberto.iglesiasdeserrablo.components.RomanesqueWindowShape
+import com.iessanalberto.iglesiasdeserrablo.data.listaIglesias
 import com.iessanalberto.iglesiasdeserrablo.ui.theme.UncialAntiqua
 import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
 
@@ -33,6 +39,7 @@ fun IglesiaScreen(
 ) {
 
     val state by iglesiaViewModel.iglesiaState.collectAsState()
+    val scrollState = rememberScrollState()
 
     LaunchedEffect(state.nombre) {
         iglesiaViewModel.cargarIglesia()
@@ -67,7 +74,10 @@ fun IglesiaScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .verticalScroll(state = scrollState)
                     .padding(20.dp),
+
+
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -80,15 +90,21 @@ fun IglesiaScreen(
                         .padding(bottom = 16.dp)
                 )
 
-                AsyncImage(
-                    model = state.foto,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(220.dp)
-                        .clip(RoundedCornerShape(16.dp))
-                )
+                LazyRow() {
+                    items(state.listaFotos) { foto ->
+                        AsyncImage(
+                            model = foto,
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(290.dp)
+                                .clip(RoundedCornerShape(16.dp))
+                        )
+                    }
+                }
+
+
 
                 Text(
                     text = state.nombre,
@@ -140,7 +156,7 @@ fun IglesiaScreen(
 
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Volver",
                             tint = Color.Black
                         )
