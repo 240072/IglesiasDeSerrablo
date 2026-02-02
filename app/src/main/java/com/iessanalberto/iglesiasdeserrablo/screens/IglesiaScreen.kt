@@ -98,7 +98,8 @@ fun IglesiaScreen(
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(290.dp)
+                                .height(300.dp)
+                                .padding(20.dp)
                                 .clip(RoundedCornerShape(16.dp))
                         )
                     }
