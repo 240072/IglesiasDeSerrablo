@@ -98,7 +98,7 @@ fun IglesiaScreen(
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(300.dp)
+                                .height(305.dp)
                                 .padding(20.dp)
                                 .clip(RoundedCornerShape(16.dp))
                         )
@@ -146,6 +146,13 @@ fun IglesiaScreen(
                         fontSize = 18.sp
                     )
                 }
+
+                Text(
+                    text = state.descripcionTotal,
+                    fontFamily = UncialAntiqua,
+                    fontSize = 20.sp,
+                    color = Color.Black
+                )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

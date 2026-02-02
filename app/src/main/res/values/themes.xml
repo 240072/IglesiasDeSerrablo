@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.IglesiasDeSerrablo" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.IglesiasDeSerrablo" parent="Theme.SplashScreen">
+        <!-- Color de fondo -->
+        <item name="windowSplashScreenBackground">#F3E9D2</item>
+
+        <!-- Logo -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+
+        <!-- Tema real de la app -->
+        <item name="postSplashScreenTheme">@style/Theme.IglesiasDeSerrablo</item>
+    </style>
 </resources>

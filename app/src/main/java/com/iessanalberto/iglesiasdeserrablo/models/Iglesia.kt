@@ -9,5 +9,6 @@ data class Iglesia(
     val descripcionShort: String = " ",
     val foto: String = " ",
     val ubicación: String = "",
-    val listaFotos: List<String> = listOf("")
+    val listaFotos: List<String> = listOf(""),
+    val descripcionTotal: String = " "
 )
