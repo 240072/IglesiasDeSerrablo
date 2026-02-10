@@ -9,6 +9,8 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.iessanalberto.iglesiasdeserrablo.screens.IglesiaScreen
 import com.iessanalberto.iglesiasdeserrablo.screens.MainScreen
@@ -16,15 +18,17 @@ import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AppNavigation() {
+fun AppNavigation(navController: NavController) {
+
 
     val iglesiaViewModel: IglesiaViewModel = viewModel()
-    val navController = rememberNavController()
+
 
     AnimatedNavHost(
-        navController = navController,
+        navController = navController as NavHostController,
         startDestination = AppScreens.MainScreen.route
     ) {
+
 
         composable(
             route = AppScreens.MainScreen.route,
@@ -41,31 +45,26 @@ fun AppNavigation() {
                 ) + fadeIn(animationSpec = tween(300))
             }
         ) {
-            MainScreen(
-                navController = navController,
-                iglesiaViewModel = iglesiaViewModel
-            )
+            MainScreen(navController, iglesiaViewModel)
         }
+
 
         composable(
             route = AppScreens.IglesiaScreen.route,
             enterTransition = {
                 slideInHorizontally(
-                    initialOffsetX = { it },
+                    initialOffsetX = { it / 2 },
                     animationSpec = tween(700, easing = FastOutSlowInEasing)
-                ) + fadeIn(animationSpec = tween(400))
+                ) + fadeIn(tween(400)) + scaleIn(initialScale = 0.95f)
             },
             popExitTransition = {
                 slideOutHorizontally(
-                    targetOffsetX = { it },
+                    targetOffsetX = { it / 2 },
                     animationSpec = tween(700, easing = FastOutSlowInEasing)
-                ) + fadeOut(animationSpec = tween(300))
+                ) + fadeOut(tween(300)) + scaleOut(targetScale = 0.95f)
             }
         ) {
-            IglesiaScreen(
-                navController = navController,
-                iglesiaViewModel = iglesiaViewModel
-            )
+            IglesiaScreen(navController, iglesiaViewModel)
         }
     }
 }

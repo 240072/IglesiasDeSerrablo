@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.iessanalberto.iglesiasdeserrablo.navigation.AppNavigation
+import com.iessanalberto.iglesiasdeserrablo.navigation.AppWithDrawer
 import com.iessanalberto.iglesiasdeserrablo.ui.theme.IglesiasDeSerrabloTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             IglesiasDeSerrabloTheme {
-                AppNavigation()
+                AppWithDrawer()
             }
         }
     }

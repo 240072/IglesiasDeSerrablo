@@ -12,6 +12,7 @@ foundationLayout = "1.10.1"
 ui = "1.10.1"
 material3 = "1.4.0"
 composeMaterial3 = "1.5.6"
+remoteCreationCompose = "1.0.0-alpha03"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,6 +33,7 @@ androidx-compose-foundation-layout = { group = "androidx.compose.foundation", na
 androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterial3" }
+androidx-compose-remote-creation-compose = { group = "androidx.compose.remote", name = "remote-creation-compose", version.ref = "remoteCreationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
