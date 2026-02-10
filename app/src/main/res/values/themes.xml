@@ -2,14 +2,12 @@
 <resources>
 
 
-    <style name="Theme.IglesiasDeSerrablo" parent="Theme.SplashScreen">
-        <!-- Color de fondo -->
+    <style name="Theme.IglesiasDeSerrablo.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#F3E9D2</item>
-
-        <!-- Logo -->
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
-
-        <!-- Tema real de la app -->
         <item name="postSplashScreenTheme">@style/Theme.IglesiasDeSerrablo</item>
+    </style>
+
+    <style name="Theme.IglesiasDeSerrablo" parent="Theme.AppCompat.DayNight.NoActionBar">
     </style>
 </resources>
