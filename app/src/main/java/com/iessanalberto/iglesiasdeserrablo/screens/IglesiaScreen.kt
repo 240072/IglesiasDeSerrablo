@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -28,6 +29,7 @@ import coil.compose.AsyncImage
 import com.iessanalberto.iglesiasdeserrablo.R
 import com.iessanalberto.iglesiasdeserrablo.components.RomanesqueWindowShape
 import com.iessanalberto.iglesiasdeserrablo.data.listaIglesias
+import com.iessanalberto.iglesiasdeserrablo.navigation.AppScreens
 import com.iessanalberto.iglesiasdeserrablo.ui.theme.UncialAntiqua
 import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
 
@@ -160,9 +162,18 @@ fun IglesiaScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 12.dp)
+                        .clickable {
+                            navController.navigate(AppScreens.MainScreen.route) {
+                                popUpTo(AppScreens.MainScreen.route) { inclusive = true }
+                            }
+                        }
                 ) {
 
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = {
+                        navController.navigate(AppScreens.MainScreen.route) {
+                            popUpTo(AppScreens.MainScreen.route) { inclusive = true }
+                        }
+                    }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Volver",

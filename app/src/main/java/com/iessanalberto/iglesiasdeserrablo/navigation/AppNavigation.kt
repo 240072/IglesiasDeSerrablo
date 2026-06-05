@@ -14,6 +14,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.iessanalberto.iglesiasdeserrablo.screens.IglesiaScreen
 import com.iessanalberto.iglesiasdeserrablo.screens.MainScreen
+import com.iessanalberto.iglesiasdeserrablo.screens.MapScreen
+import com.iessanalberto.iglesiasdeserrablo.screens.GameScreen
+import com.iessanalberto.iglesiasdeserrablo.screens.PdfScreen
 import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -65,6 +68,42 @@ fun AppNavigation(navController: NavController) {
             }
         ) {
             IglesiaScreen(navController, iglesiaViewModel)
+        }
+
+        composable(
+            route = AppScreens.MapScreen.route,
+            enterTransition = {
+                fadeIn(tween(700)) + scaleIn(initialScale = 0.8f)
+            },
+            popExitTransition = {
+                fadeOut(tween(700)) + scaleOut(targetScale = 0.8f)
+            }
+        ) {
+            MapScreen(navController, iglesiaViewModel)
+        }
+
+        composable(
+            route = AppScreens.GameScreen.route,
+            enterTransition = {
+                slideInVertically(initialOffsetY = { it }) + fadeIn()
+            },
+            popExitTransition = {
+                slideOutVertically(targetOffsetY = { it }) + fadeOut()
+            }
+        ) {
+            GameScreen(navController)
+        }
+
+        composable(
+            route = AppScreens.PdfScreen.route,
+            enterTransition = {
+                fadeIn(tween(500))
+            },
+            popExitTransition = {
+                fadeOut(tween(500))
+            }
+        ) {
+            PdfScreen(navController)
         }
     }
 }

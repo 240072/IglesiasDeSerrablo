@@ -62,6 +62,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-navigation-animation:0.36.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.androidx.compose.remote.creation.compose)
+    implementation(libs.osmdroid.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

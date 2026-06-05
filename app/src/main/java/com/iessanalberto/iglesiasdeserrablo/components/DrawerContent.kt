@@ -1,5 +1,6 @@
 package com.iessanalberto.iglesiasdeserrablo.components
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.SportsEsports
 import androidx.compose.material.icons.twotone.Church
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -23,9 +25,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import com.iessanalberto.iglesiasdeserrablo.R
 import com.iessanalberto.iglesiasdeserrablo.navigation.AppScreens
@@ -36,7 +40,7 @@ fun DrawerContent(
     navController: NavController,
     onClose: () -> Unit
 ) {
-
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -86,6 +90,7 @@ fun DrawerContent(
             modifier = Modifier.fillMaxWidth()
         ) {
             DrawerItem("Mapa Rutas") {
+                navController.navigate(AppScreens.MapScreen.route)
                 onClose()
             }
 
@@ -102,12 +107,36 @@ fun DrawerContent(
         }
 
 
+        Box(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            DrawerItem("Juego") {
+                navController.navigate(AppScreens.GameScreen.route)
+                onClose()
+            }
+
+            // Icono superpuesto
+            Icon(
+                imageVector = Icons.Filled.SportsEsports,
+                contentDescription = "Juego",
+                modifier = Modifier
+                    .size(50.dp)
+                    .align(Alignment.CenterStart)
+                    .padding(start = 16.dp),
+                tint = MaterialTheme.colorScheme.onSurface
+            )
+        }
+
+
         DrawerItem("Sobre Serrablo") {
+            navController.navigate(AppScreens.PdfScreen.route)
             onClose()
         }
 
 
         DrawerItem("Contacto") {
+            val intent = Intent(Intent.ACTION_VIEW, "https://www.serrablo.org/".toUri())
+            context.startActivity(intent)
             onClose()
         }
 

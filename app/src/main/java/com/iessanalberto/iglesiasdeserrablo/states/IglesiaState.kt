@@ -7,5 +7,7 @@ data class IglesiaState(
     val foto: String = " ",
     val ubicación: String = " ",
     val listaFotos: List<String> = listOf(),
-    val descripcionTotal: String = " "
+    val descripcionTotal: String = " ",
+    val latitud: Double = 0.0,
+    val longitud: Double = 0.0
 )
