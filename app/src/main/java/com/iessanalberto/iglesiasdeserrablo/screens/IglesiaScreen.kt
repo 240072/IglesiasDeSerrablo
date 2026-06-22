@@ -163,16 +163,12 @@ fun IglesiaScreen(
                         .fillMaxWidth()
                         .padding(top = 12.dp)
                         .clickable {
-                            navController.navigate(AppScreens.MainScreen.route) {
-                                popUpTo(AppScreens.MainScreen.route) { inclusive = true }
-                            }
+                            navController.popBackStack()
                         }
                 ) {
 
                     IconButton(onClick = {
-                        navController.navigate(AppScreens.MainScreen.route) {
-                            popUpTo(AppScreens.MainScreen.route) { inclusive = true }
-                        }
+                        navController.popBackStack()
                     }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
