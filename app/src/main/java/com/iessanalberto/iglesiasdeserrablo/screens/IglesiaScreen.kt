@@ -28,6 +28,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.iessanalberto.iglesiasdeserrablo.R
 import com.iessanalberto.iglesiasdeserrablo.components.RomanesqueWindowShape
+import com.iessanalberto.iglesiasdeserrablo.components.YouTubePlayerWidget
 import com.iessanalberto.iglesiasdeserrablo.data.listaIglesias
 import com.iessanalberto.iglesiasdeserrablo.navigation.AppScreens
 import com.iessanalberto.iglesiasdeserrablo.ui.theme.UncialAntiqua
@@ -155,7 +156,15 @@ fun IglesiaScreen(
                     fontSize = 20.sp,
                     color = Color.Black
                 )
+                Column(modifier = Modifier.fillMaxSize()) {
+                    Text(text = "Vídeo explicativo de la Iglesia", style = MaterialTheme.typography.titleMedium)
 
+                    // Llamas a tu componente pasando el ID que está en la URL de YouTube de tu iglesia
+                    YouTubePlayerWidget(
+                        videoId = "dQw4w9WgXcQ",
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Start,

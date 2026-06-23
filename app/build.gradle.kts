@@ -63,6 +63,7 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.androidx.compose.remote.creation.compose)
     implementation(libs.osmdroid.android)
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:13.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
