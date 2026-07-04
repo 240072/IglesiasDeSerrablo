@@ -35,7 +35,8 @@ class IglesiaViewModel : ViewModel() {
                     listaFotos = data.listaFotos,
                     descripcionTotal = data.descripcionTotal,
                     latitud = data.latitud,
-                    longitud = data.longitud
+                    longitud = data.longitud,
+                    videoId = data.videoID
                 )
             }
         }

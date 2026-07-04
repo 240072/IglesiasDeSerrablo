@@ -11,8 +11,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.iessanalberto.iglesiasdeserrablo.components.MapWidget
 import com.iessanalberto.iglesiasdeserrablo.data.listaIglesias
-import com.iessanalberto.iglesiasdeserrablo.data.rutasIglesias
-import com.iessanalberto.iglesiasdeserrablo.models.Ruta
 import com.iessanalberto.iglesiasdeserrablo.navigation.AppScreens
 import com.iessanalberto.iglesiasdeserrablo.ui.theme.UncialAntiqua
 import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
@@ -22,21 +20,19 @@ import com.iessanalberto.iglesiasdeserrablo.viewmodels.IglesiaViewModel
 fun MapScreen(navController: NavController, iglesiaViewModel: IglesiaViewModel) {
 
     // Obtener las rutas únicas disponibles en tu lista de iglesias (Ej: "Ruta A", "Ruta B", "Todas")
+    var rutaSeleccionada by remember { mutableStateOf("Todas las Iglesias") }
 
-    val todasIglesias = Ruta("Todas las iglesias", listaIglesias )
-    val opcionesRutas = remember {
-        listOf(todasIglesias) + rutasIglesias
-    }
-    var rutaSeleccionada by remember { mutableStateOf(todasIglesias) }
+    val opcionesRutas =
+        listOf("Todas las Iglesias") + listaIglesias.mapNotNull{it.ruta}.distinct()
     var expanded by remember { mutableStateOf(false) }
 
     // Filtrar la lista de iglesias dinámicamente según la selección
     val iglesiasFiltradas by remember {
         derivedStateOf {
-            if (rutaSeleccionada == todasIglesias) {
+            if (rutaSeleccionada == "Todas las Iglesias") {
                 listaIglesias
             } else {
-                rutaSeleccionada.iglesiasEnRuta
+                listaIglesias.filter { rutaSeleccionada == it.ruta }
             }
         }
     }
@@ -55,7 +51,7 @@ fun MapScreen(navController: NavController, iglesiaViewModel: IglesiaViewModel) 
             MapWidget(
                 iglesias = iglesiasFiltradas,
                 // Si elige "Todas", quizás no quieras líneas cruzando todo el mapa, solo si elige una ruta específica
-                dibujarRuta = rutaSeleccionada != todasIglesias,
+                dibujarRuta = rutaSeleccionada != "Todas las Iglesias",
                 onIglesiaClick = { iglesia ->
                     iglesiaViewModel.iglesiaSelected(iglesia.nombre)
                     navController.navigate(AppScreens.IglesiaScreen.route)
@@ -77,7 +73,7 @@ fun MapScreen(navController: NavController, iglesiaViewModel: IglesiaViewModel) 
                         .padding(16.dp)
                 ) {
                     OutlinedTextField(
-                        value = rutaSeleccionada.nombre,
+                        value = rutaSeleccionada,
                         onValueChange = {},
                         readOnly = true,
                         label = { Text("Selecciona una ruta") },
@@ -90,9 +86,9 @@ fun MapScreen(navController: NavController, iglesiaViewModel: IglesiaViewModel) 
                     ) {
                         opcionesRutas.forEach { ruta ->
                             DropdownMenuItem(
-                                text = { Text(ruta.nombre) },
+                                text = { Text(ruta.toString()) },
                                 onClick = {
-                                    rutaSeleccionada = ruta
+                                    rutaSeleccionada = ruta.toString()
                                     expanded = false
                                 }
                             )

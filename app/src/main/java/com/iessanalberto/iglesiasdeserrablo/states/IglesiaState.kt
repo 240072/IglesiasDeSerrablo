@@ -9,5 +9,6 @@ data class IglesiaState(
     val listaFotos: List<String> = listOf(),
     val descripcionTotal: String = " ",
     val latitud: Double = 0.0,
-    val longitud: Double = 0.0
+    val longitud: Double = 0.0,
+    val videoId: String = "dQw4w9WgXcQ"
 )

@@ -161,7 +161,7 @@ fun IglesiaScreen(
 
                     // Llamas a tu componente pasando el ID que está en la URL de YouTube de tu iglesia
                     YouTubePlayerWidget(
-                        videoId = "dQw4w9WgXcQ",
+                        videoId = state.videoId,
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
