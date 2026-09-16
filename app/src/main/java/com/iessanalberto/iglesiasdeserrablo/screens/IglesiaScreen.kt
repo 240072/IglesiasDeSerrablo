@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.iessanalberto.iglesiasdeserrablo.R
+import com.iessanalberto.iglesiasdeserrablo.components.AudioMediaPlayer
 import com.iessanalberto.iglesiasdeserrablo.components.RomanesqueWindowShape
 import com.iessanalberto.iglesiasdeserrablo.components.YouTubePlayerWidget
 import com.iessanalberto.iglesiasdeserrablo.data.listaIglesias
@@ -156,6 +157,10 @@ fun IglesiaScreen(
                     fontSize = 20.sp,
                     color = Color.Black
                 )
+                Column(modifier = Modifier.fillMaxSize()){
+                    Text (text = "Audio explicativo de la Iglesia", style = MaterialTheme.typography.titleMedium)
+                    AudioMediaPlayer(state.audioId)
+                }
                 Column(modifier = Modifier.fillMaxSize()) {
                     Text(text = "Vídeo explicativo de la Iglesia", style = MaterialTheme.typography.titleMedium)
 

@@ -1,6 +1,7 @@
 package com.iessanalberto.iglesiasdeserrablo.models
 
 import androidx.compose.ui.graphics.painter.Painter
+import com.iessanalberto.iglesiasdeserrablo.R
 import kotlin.collections.listOf
 
 data class Iglesia(
@@ -14,5 +15,6 @@ data class Iglesia(
     val latitud: Double = 0.0,
     val longitud: Double = 0.0,
     val ruta: String? = null,
+    val audioId: Int = R.raw.mi_audio,
     val videoID: String = "dQw4w9WgXcQ"
 )

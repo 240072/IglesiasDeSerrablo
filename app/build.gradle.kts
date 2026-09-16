@@ -6,13 +6,13 @@ plugins {
 android {
     namespace = "com.iessanalberto.iglesiasdeserrablo"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
         applicationId = "com.iessanalberto.iglesiasdeserrablo"
-        minSdk = 33
-        targetSdk = 36
+        minSdk = 30
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -39,6 +39,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.foundation.layout)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -64,6 +65,7 @@ dependencies {
     implementation(libs.androidx.compose.remote.creation.compose)
     implementation(libs.osmdroid.android)
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:13.0.0")
+    implementation(libs.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
